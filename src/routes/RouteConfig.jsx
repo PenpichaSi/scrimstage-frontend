@@ -13,7 +13,7 @@ import LookingForScrim from "../pages/LookingForScrim";
 import LookingForTeam from "../pages/LookingForTeam";
 
 function RouteConfig() {
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState("something");
 
 	const navigate = useNavigate();
 	return (
