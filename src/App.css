@@ -179,3 +179,31 @@ p {
 	background-color: transparent;
 	border: none;
 }
+
+.footer_container {
+	height: 165px;
+	width: 100%;
+	background-color: #404040;
+	display: flex;
+	justify-content: space-around;
+}
+
+.footer_logo {
+	width: 16px;
+	height: 16px;
+}
+
+.footer_list {
+	display: flex;
+	flex-direction: column;
+}
+
+.footer_header {
+	color: #ffffff;
+	width: 100%;
+}
+
+.footer_item {
+	display: flex;
+	margin-left: 20px;
+}

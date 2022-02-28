@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 function MainLayout() {
 	return (
-		<div>
+		<div className="d-flex flex-column">
 			<NavBar />
 			<Outlet />
 			<Footer />
