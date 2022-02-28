@@ -11,6 +11,10 @@ function LoginForm() {
 	const [password, setPassword] = useState(null);
 
 	const navigate = useNavigate();
+
+	// const handleSubmitLoginForm = () => {
+
+	// }
 	return (
 		<div className="container auth_form">
 			<h1 className="mt-4">

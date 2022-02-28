@@ -11,10 +11,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { FormControl } from "@mui/material";
 
 function RegisterForm() {
+	const [username, setUsername] = useState(null);
+	const [password, setPassword] = useState(null);
+	const [reapeatPassword, setRepeatPassword] = useState(null);
+	const [email, setEmail] = useState(null);
+	const [birthDate, setBirthDate] = useState(null);
 	const [gender, setGender] = useState(null);
 
-	const handleChangeGender = (e) => {
-		setGender(e.target.value);
+	const navigate = useNavigate();
+
+	const handleSubmitRegisterForm = () => {
+		// submit register request to back-end
+
+		// navigate back to login page
+		navigate("/");
 	};
 	return (
 		<div className="container auth_form">
@@ -29,6 +39,8 @@ function RegisterForm() {
 						variant="outlined"
 						color="primary"
 						className="my-2 auth_input"
+						value={username}
+						onChange={(e) => setUsername(e.target.value)}
 					/>
 					<TextField
 						label="Password"
@@ -36,12 +48,16 @@ function RegisterForm() {
 						variant="outlined"
 						color="primary"
 						className="my-2 auth_input"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
 					/>
 					<TextField
 						label="Repeat password"
 						variant="outlined"
 						color="primary"
 						className="my-2 auth_input"
+						value={reapeatPassword}
+						onChange={(e) => setRepeatPassword(e.target.value)}
 					/>
 					<TextField
 						label="Email"
@@ -49,6 +65,8 @@ function RegisterForm() {
 						variant="outlined"
 						color="primary"
 						className="my-2 auth_input"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
 					/>
 					<div className="d-flex ms-1 my-3 align-items-center justify-content-between">
 						<h6 className="font-thirdnary">Date of Birth: </h6>
@@ -60,6 +78,8 @@ function RegisterForm() {
 							type="date"
 							InputLabelProps={{ shrink: true }}
 							sx={{ width: "75%" }}
+							value={birthDate}
+							onChange={(e) => setBirthDate(e.target.value)}
 						/>
 					</div>
 					<div className="d-flex align-items-center">
@@ -69,7 +89,7 @@ function RegisterForm() {
 							row
 							name="row-radio-group"
 							value={gender}
-							onChange={handleChangeGender}
+							onChange={(e) => setGender(e.target.value)}
 						>
 							<FormControlLabel
 								value="male"
@@ -106,7 +126,12 @@ function RegisterForm() {
 							/>
 						</RadioGroup>
 					</div>
-					<Button color="secondary" variant="contained" className="mt-3">
+					<Button
+						color="secondary"
+						variant="contained"
+						className="mt-3"
+						onClick={handleSubmitRegisterForm}
+					>
 						Submit
 					</Button>
 				</Box>
