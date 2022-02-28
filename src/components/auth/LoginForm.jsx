@@ -22,7 +22,7 @@ function LoginForm() {
 			</h1>
 			<hr className="w-100" />
 			<ThemeProvider theme={theme}>
-				<Box component="form" className="d-flex flex-column w-100">
+				<form className="d-flex flex-column w-100">
 					<TextField
 						label="username"
 						variant="outlined"
@@ -30,6 +30,7 @@ function LoginForm() {
 						color="primary"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
+						autoComplete="off"
 					/>
 					<TextField
 						label="password"
@@ -39,7 +40,7 @@ function LoginForm() {
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
-				</Box>
+				</form>
 
 				<div className="d-flex justify-content-start w-100 ms-3 ">
 					<p className="font-secondary mt-1">forget password</p>
