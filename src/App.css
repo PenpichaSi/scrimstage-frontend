@@ -78,6 +78,13 @@ p {
 	font-size: 10px;
 }
 
+.flex-column-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .public_bold {
 	color: #ff5500;
 	font-size: 48px;
@@ -206,4 +213,60 @@ p {
 .footer_item {
 	display: flex;
 	margin-left: 20px;
+}
+
+.homepage_container {
+	width: 100%;
+	background-color: #4e4e4e;
+}
+
+.outlet_header {
+	width: 100%;
+}
+
+.outlet_header > hr {
+	width: 85%;
+}
+
+.homepage_body {
+	width: 100%;
+	height: 60vh;
+}
+
+.homepage_card {
+	width: 344px;
+	height: 266px;
+	background-color: #404040;
+	margin: 40px 40px;
+}
+
+.lol-bg {
+	background-image: url(./assets//images//background_image/lol.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center;
+}
+
+.csgo-bg {
+	background-image: url(./assets/images/background_image/csgo.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	/* height: auto; */
+}
+
+.valorant-bg {
+	background-image: url(./assets/images/background_image/valorant.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center;
+}
+
+.homepage_thumbnail_title {
+	width: 100%;
+	background-color: #4e4e4e;
+	opacity: 65%;
+	display: flex;
+	justify-content: center;
 }
