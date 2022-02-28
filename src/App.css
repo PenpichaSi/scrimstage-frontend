@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Play", sans-serif;
+	color: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.font-primary {
+	color: #ffffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.font-secondary {
+	color: #ff5500;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.font-thirdnary {
+	color: #999b9d;
 }
 
-.App-link {
-  color: #61dafb;
+.icon-primary {
+	color: #ffffff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.icon-secondary {
+	color: #999b9d;
+}
+
+.icon-inactive {
+	color: #4e4e4e;
+}
+
+.icon-important {
+	color: #d64242;
+}
+
+.bg-primary {
+	background-color: #161616;
+}
+
+.bg-secondary {
+	background-color: #4e4e4e;
+}
+
+.bg-thirdnary {
+	background-color: #a0a0a0;
+}
+.bg-important {
+	background-color: #ff5500;
+}
+
+h1 {
+	font-size: 36px;
+}
+
+h2 {
+	font-size: 28px;
+}
+
+h3 {
+	font-size: 20px;
+}
+
+h4 {
+	font-size: 16px;
+}
+
+h5 {
+	font-size: 14px;
+}
+
+h6 {
+	font-size: 12px;
+}
+p {
+	font-size: 10px;
+}
+
+.public_bold {
+	color: #ff5500;
+	font-size: 48px;
+}
+
+.public_layout_container {
+	background-image: url("./assets/images/background_image/world_map.jpg");
+	height: 817px;
+	width: 100vw;
+}
+
+.auth_input {
+	color: white;
+	background-color: #525252;
+}
+
+.auth_form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 75%;
+	background-color: #404040;
 }
