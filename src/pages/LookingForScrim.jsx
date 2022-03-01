@@ -1,8 +1,13 @@
+import { useState } from "react";
+import { Button, ThemeProvider } from "@mui/material";
+import theme from "../services/mui_style";
 import CreateScrim from "../components/LookingForScrim/CreateScrim";
 import FilterScrim from "../components/LookingForScrim/FilterScrim";
 import ScrimCard from "../components/LookingForScrim/ScrimCard";
 
 function LookingForScrim() {
+	const [showCreateScrim, setShowCreateScrim] = useState(false);
+
 	return (
 		<div className="scrim_container flex-column-center">
 			{/* header */}
@@ -13,12 +18,37 @@ function LookingForScrim() {
 				<hr />
 			</div>
 			{/* create Match */}
-			<CreateScrim />
+			<div className="mt-4 mb-2 flex-column-center">
+				<ThemeProvider theme={theme}>
+					{!showCreateScrim && (
+						<Button
+							sx={{ width: "400px" }}
+							variant="contained"
+							color="secondary"
+							onClick={() => setShowCreateScrim(!showCreateScrim)}
+						>
+							<b>Create Scrim</b>
+						</Button>
+					)}
+				</ThemeProvider>
+			</div>
+			{showCreateScrim && (
+				<CreateScrim
+					showCreateScrim={showCreateScrim}
+					setShowCreateScrim={setShowCreateScrim}
+				/>
+			)}
 
 			{/* filter component */}
-			{/* <FilterScrim /> */}
+			<FilterScrim />
+
 			{/* body */}
-			<div></div>
+			<div className="findscrim_body row justify-content-start">
+				<ScrimCard />
+				<ScrimCard />
+				<ScrimCard />
+				<ScrimCard />
+			</div>
 		</div>
 	);
 }

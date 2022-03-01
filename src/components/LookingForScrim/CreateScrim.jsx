@@ -13,7 +13,7 @@ import {
 	MenuItem,
 } from "@mui/material";
 
-function CreateScrim() {
+function CreateScrim({ setShowCreateScrim }) {
 	const [dateTime, setDateTime] = useState("");
 	const [duration, setDuration] = useState("");
 	const [rank, setRank] = useState("");
@@ -30,11 +30,27 @@ function CreateScrim() {
 		}
 	};
 
+	const handleCreateScrim = () => {
+		setShowCreateScrim((prev) => !prev);
+	};
+
 	return (
-		<div className="flex-column-center createscrim_container">
+		<div className="flex-column-center createscrim_container mt-1 mb-4">
 			<ThemeProvider theme={theme}>
 				{/* title */}
-				<div className="mt-3">
+				<div
+					className="mt-3 d-flex justify-content-center align-items-center position-relative"
+					style={{ width: "100%" }}
+				>
+					<button
+						className="position-absolute start-0 btn btn-secondary bg-transparent border-0 ms-3"
+						onClick={(prev) => setShowCreateScrim(!prev)}
+					>
+						<i
+							style={{ fontSize: "24px" }}
+							className="fa-solid fa-arrow-left"
+						/>
+					</button>
 					<h1>Create Your Match</h1>
 				</div>
 
@@ -89,11 +105,11 @@ function CreateScrim() {
 					{/* rank */}
 					<div>
 						<FormControl sx={{ width: "140px" }} className="mx-2">
-							<InputLabel id="duration-lable">Rank</InputLabel>
+							<InputLabel id="rank-lable">Rank</InputLabel>
 							<Select
-								labelId="duration-label"
-								id="duration"
-								label="Duration"
+								labelId="rank-label"
+								id="rank"
+								label="Rank"
 								variant="outlined"
 								value={rank}
 								onChange={(e) => setRank(e.target.value)}
@@ -141,6 +157,7 @@ function CreateScrim() {
 				{/* button */}
 				<div>
 					<Button
+						onClick={handleCreateScrim}
 						sx={{ width: "200px" }}
 						color="secondary"
 						variant="contained"
