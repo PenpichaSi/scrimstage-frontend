@@ -57,7 +57,10 @@ function NavBar() {
 					<button className="btn btn-secondary profile_btn">
 						<i className="fa-solid fa-bell" />
 					</button>
-					<button className="btn btn-secondary profile_btn">
+					<button
+						className="btn btn-secondary profile_btn"
+						onClick={() => navigate("/settings")}
+					>
 						<i className="fa-solid fa-gear" />
 					</button>
 				</div>
