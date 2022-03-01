@@ -43,7 +43,7 @@ function LookingForScrim() {
 			<FilterScrim />
 
 			{/* body */}
-			<div className="findscrim_body row justify-content-start">
+			<div className="findscrim_body row justify-content-start mx-auto">
 				<ScrimCard />
 				<ScrimCard />
 				<ScrimCard />

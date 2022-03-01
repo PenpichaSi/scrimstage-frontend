@@ -307,3 +307,34 @@ p {
 	background-color: #404040;
 	height: 290px;
 }
+
+.scrimcard_datetime {
+	background-color: rgba(18, 18, 18, 50%);
+	text-align: center;
+	width: 120px;
+	height: 24px;
+	border-radius: 20px;
+}
+
+.mapname_container {
+	background-color: rgba(18, 18, 18, 50%);
+	width: auto;
+	text-align: center;
+	border-radius: 15px;
+	border: 1px solid #999b9d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mapthumbnail_container {
+	height: 40px;
+	background-color: rgba(18, 18, 18, 50%);
+	display: flex;
+	justify-content: center;
+}
+
+.map_pic {
+	width: 60px;
+	height: 38px;
+}
