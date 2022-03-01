@@ -1,7 +1,10 @@
 import { Button, ThemeProvider } from "@mui/material";
 import theme from "../../services/mui_style";
 
-export default function UserProfileHeader() {
+export default function UserProfileHeader({
+	setShowModalCreateTeam,
+	showModalCreateTeam,
+}) {
 	return (
 		<ThemeProvider theme={theme}>
 			<div className="user_profile_header d-flex align-items-center position-relative">
@@ -26,7 +29,11 @@ export default function UserProfileHeader() {
 					</div>
 				</div>
 				<div className="position-absolute end-0 bottom-0 me-5 mb-3">
-					<Button variant="contained" color="secondary">
+					<Button
+						variant="contained"
+						color="secondary"
+						onClick={() => setShowModalCreateTeam(!showModalCreateTeam)}
+					>
 						Add Friend
 					</Button>
 				</div>
