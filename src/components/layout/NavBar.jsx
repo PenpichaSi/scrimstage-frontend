@@ -46,7 +46,11 @@ function NavBar() {
 					friend
 				</button>
 				<div className="NavBar_profile d-flex align-items-center">
-					<div className="NavBar_profile_img ms-2">
+					<div
+						className="NavBar_profile_img ms-2"
+						type="button"
+						onClick={() => navigate("user")}
+					>
 						<i className="fa-solid fa-user" />
 					</div>
 
