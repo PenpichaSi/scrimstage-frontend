@@ -20,12 +20,15 @@ function CreateScrim() {
 	const [mapList, setMapList] = useState([]);
 
 	const handleCheckedMapList = (e) => {
-		const checkedOrNot = mapList.find((element) => {
-			if (element === e.target.value) return false;
-		});
-		if (checkedOrNot) setMapList([...mapList, e.target.value]);
+		const checkedOrNot = mapList.includes(e.target.value);
+		if (checkedOrNot === false) setMapList([...mapList, e.target.value]);
+		if (checkedOrNot === true) {
+			const deleteIndex = mapList.indexOf(e.target.value);
+			const newMapList = [...mapList];
+			newMapList.splice(deleteIndex, 1);
+			setMapList(newMapList);
+		}
 	};
-	console.log(mapList);
 
 	return (
 		<div className="flex-column-center createscrim_container">
@@ -41,7 +44,6 @@ function CreateScrim() {
 					<div>
 						<FormControl className="mx-2">
 							<TextField
-								labelId="date-label"
 								label="Date &amp; Time"
 								id="date-time"
 								variant="outlined"
@@ -124,6 +126,7 @@ function CreateScrim() {
 						{maps.map((item) => (
 							<FormControlLabel
 								className="col-3"
+								name={item.title}
 								control={<Checkbox name={item.title} />}
 								label={item.title}
 								key={item.id}

@@ -78,39 +78,46 @@ const ranks = [
 
 const maps = [
 	{
-		id: 1,
+		id: 0,
 		title: "Haven",
 		value: "HAVEN",
+		checked: false,
+	},
+	{
+		id: 1,
+		title: "Ascent",
+		value: "ASCENT",
+		checked: false,
 	},
 	{
 		id: 2,
-		title: "Ascent",
-		value: "ASCENT",
+		title: "Split",
+		value: "SPLIT",
+		checked: false,
 	},
 	{
 		id: 3,
-		title: "Split",
-		value: "SPLIT",
+		title: "Icebox",
+		value: "ICEBOX",
+		checked: false,
 	},
 	{
 		id: 4,
-		title: "Icebox",
-		value: "ICEBOX",
+		title: "Breeze",
+		value: "BREEZE",
+		checked: false,
 	},
 	{
 		id: 5,
-		title: "Breeze",
-		value: "BREEZE",
+		title: "Fracture",
+		value: "FRACTURE",
+		checked: false,
 	},
 	{
 		id: 6,
-		title: "Fracture",
-		value: "FRACTURE",
-	},
-	{
-		id: 7,
 		title: "Bind",
 		value: "BIND",
+		checked: false,
 	},
 ];
 
