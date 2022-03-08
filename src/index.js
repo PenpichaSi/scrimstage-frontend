@@ -8,13 +8,16 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import AuthContextProvider from "./contexts/AuthContext";
 import ErrorContextProvider from "./contexts/ErrorContext";
+import FetchDataContextProvider from "./contexts/FetchDataContext";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<ErrorContextProvider>
 				<AuthContextProvider>
-					<App />
+					<FetchDataContextProvider>
+						<App />
+					</FetchDataContextProvider>
 				</AuthContextProvider>
 			</ErrorContextProvider>
 		</BrowserRouter>

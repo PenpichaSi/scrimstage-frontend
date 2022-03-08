@@ -13,9 +13,10 @@ import LookingForScrim from "../pages/LookingForScrim";
 import LookingForTeam from "../pages/LookingForTeam";
 import PlayStageAccountSetting from "../components/Settings/PlayStageAccountSetting";
 import GameAccountSetting from "../components/Settings/GameAccountSetting";
+import { AuthContext } from "../contexts/AuthContext";
 
 function RouteConfig() {
-	const [user, setUser] = useState("asdf");
+	const { user } = useContext(AuthContext);
 
 	const navigate = useNavigate();
 	return (

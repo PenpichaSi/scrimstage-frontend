@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Button, ThemeProvider } from "@mui/material";
 import theme from "../../services/mui_style";
+import { FetchDataContext } from "../../contexts/FetchDataContext";
 
 export default function UserProfileHeader({
 	setShowModalCreateTeam,
 	showModalCreateTeam,
 }) {
 	const { user } = useContext(AuthContext);
-
+	const { riotAccount } = useContext(FetchDataContext);
 	return (
 		<ThemeProvider theme={theme}>
 			<div className="user_profile_header d-flex align-items-center position-relative">
@@ -29,7 +30,11 @@ export default function UserProfileHeader({
 						<h2 className="ms-3">
 							<strong>{user.username}</strong>
 						</h2>
-						<h3 className="ms-3">Member since:</h3>
+						{riotAccount ? (
+							<h3 className="ms-3">{`${riotAccount.username}   #${riotAccount.tag}`}</h3>
+						) : (
+							<h3>haven't connect Valorant Account yet</h3>
+						)}
 					</div>
 				</div>
 				<div className="position-absolute end-0 bottom-0 me-5 mb-3">
@@ -38,7 +43,7 @@ export default function UserProfileHeader({
 						color="secondary"
 						onClick={() => setShowModalCreateTeam(!showModalCreateTeam)}
 					>
-						Add Friend
+						Create Team
 					</Button>
 				</div>
 			</div>

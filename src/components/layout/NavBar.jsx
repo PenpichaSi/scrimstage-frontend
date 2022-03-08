@@ -7,7 +7,6 @@ function NavBar() {
 	const [search, setSearch] = useState("");
 
 	const navigate = useNavigate();
-	console.log(user);
 	return (
 		<div className="NavBar_container">
 			<div className="NavBar_left ">
@@ -66,10 +65,16 @@ function NavBar() {
 						{user.username}
 					</b>
 					<div className="vl"></div>
-					<button className="btn btn-secondary profile_btn">
+					<button
+						className="btn btn-secondary profile_btn"
+						onClick={() => navigate("/notifications")}
+					>
 						<i className="fa-solid fa-bell" />
 					</button>
-					<button className="btn btn-secondary profile_btn">
+					<button
+						className="btn btn-secondary profile_btn"
+						onClick={() => navigate("/settings")}
+					>
 						<i className="fa-solid fa-gear" />
 					</button>
 				</div>

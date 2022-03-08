@@ -1,21 +1,41 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ErrorContext } from "../../contexts/ErrorContext";
+import { FetchDataContext } from "../../contexts/FetchDataContext";
+import axios from "../../Config/axios";
+import validator from "validator";
 import { Button, ThemeProvider, Modal, TextField } from "@mui/material";
 import theme from "../../services/mui_style";
 import val from "../../assets/images/logo/Riot.png";
 import val_thumbnail from "../../assets/images/background_image/val_thumbnail.jpeg";
 
 export default function GameAccountSetting() {
+	const { setError } = useContext(ErrorContext);
+	const { riotAccount, setRiotAccount } = useContext(FetchDataContext);
 	const [showAddRiotAccount, setShowAddRiotAccount] = useState(false);
-	const [riotAccout, setRiotAccout] = useState("dsaf");
 	const [inGameName, setInGameName] = useState("");
 	const [tag, setTag] = useState("");
 
-	const handleShowModal = () => setShowAddRiotAccount(true);
-	const handleCloseModal = () => setShowAddRiotAccount(false);
-
-	const handleConnectButton = () => {
+	const handleInitConnectRiot = async (e) => {
+		e.preventDefault();
+		if (!validator.isEmpty(inGameName) || !validator.isEmpty(tag)) {
+			setError("input cannot be empty");
+		}
+		await axios
+			.post("/riot/connect", {
+				name: inGameName.toUpperCase(),
+				tag: tag,
+			})
+			.then((res) => {
+				setRiotAccount(res.data);
+				console.log(res.data);
+			});
+		setInGameName("");
+		setTag("");
 		handleCloseModal();
 	};
+
+	const handleShowModal = () => setShowAddRiotAccount(true);
+	const handleCloseModal = () => setShowAddRiotAccount(false);
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -27,7 +47,7 @@ export default function GameAccountSetting() {
 					</h4>
 				</div>
 
-				{!riotAccout ? (
+				{!riotAccount ? (
 					<div className="riot_account_container">
 						<h4 className="font-thirdnary ms-4">Connect Your Riot Id now</h4>
 						<Button
@@ -122,7 +142,7 @@ export default function GameAccountSetting() {
 							<Button
 								variant="contained"
 								color="secondary"
-								onClick={handleConnectButton}
+								onClick={handleInitConnectRiot}
 							>
 								<strong>Connect</strong>
 							</Button>

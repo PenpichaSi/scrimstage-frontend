@@ -1,5 +1,5 @@
 import rank from "../../assets/images/rank/gold.png";
-import avatar from "../../assets/images/logo/avatar.png";
+import avatar from "../../assets/images/rank/gold.png";
 import {
 	Card,
 	CardActions,
