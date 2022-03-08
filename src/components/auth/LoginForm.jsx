@@ -5,16 +5,19 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function LoginForm() {
-	const [username, setUsername] = useState(null);
+	const { login } = useContext(AuthContext);
+	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
 
 	const navigate = useNavigate();
 
-	// const handleSubmitLoginForm = () => {
-
-	// }
+	const handleSubmitLoginForm = (e) => {
+		e.preventDefault();
+		login(email, password);
+	};
 	return (
 		<div className="container auth_form">
 			<h1 className="mt-4">
@@ -24,12 +27,12 @@ function LoginForm() {
 			<ThemeProvider theme={theme}>
 				<form className="d-flex flex-column w-100">
 					<TextField
-						label="username"
+						label="email"
 						variant="outlined"
 						className="my-2 login_input"
 						color="primary"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
 						autoComplete="off"
 					/>
 					<TextField
@@ -45,7 +48,11 @@ function LoginForm() {
 				<div className="d-flex justify-content-start w-100 ms-3 ">
 					<p className="font-secondary mt-1">forget password</p>
 				</div>
-				<Button variant="contained" color="secondary">
+				<Button
+					variant="contained"
+					color="secondary"
+					onClick={handleSubmitLoginForm}
+				>
 					Log in
 				</Button>
 				<div className=" d-flex justify-content-center mt-4 mb-3">

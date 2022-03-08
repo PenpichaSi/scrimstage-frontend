@@ -1,29 +1,68 @@
 import { useState, useContext } from "react";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "../../services/mui_style";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import { Link, useNavigate } from "react-router-dom";
-import { FormControl } from "@mui/material";
+import axios from "../../Config/axios";
+import { ErrorContext } from "../../contexts/ErrorContext";
+import validator from "validator";
+import {
+	ThemeProvider,
+	Box,
+	TextField,
+	Button,
+	Radio,
+	RadioGroup,
+	FormControlLabel,
+} from "@mui/material";
+import theme from "../../services/mui_style";
 
 function RegisterForm() {
-	const [username, setUsername] = useState(null);
-	const [password, setPassword] = useState(null);
-	const [reapeatPassword, setRepeatPassword] = useState(null);
-	const [email, setEmail] = useState(null);
-	const [birthDate, setBirthDate] = useState(null);
-	const [gender, setGender] = useState(null);
+	const { error, setError } = useContext(ErrorContext);
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [reapeatPassword, setRepeatPassword] = useState("");
+	const [email, setEmail] = useState("");
+	const [birthDate, setBirthDate] = useState("");
+	const [gender, setGender] = useState("");
 
 	const navigate = useNavigate();
 
-	const handleSubmitRegisterForm = () => {
-		// submit register request to back-end
+	const handleSubmitRegisterForm = async (e) => {
+		e.preventDefault();
+		setError("");
+		if (!validator.isEmpty(username)) {
+			console.log("username cannot be empty");
+			setError("username cannot be empty");
+		}
+		if (!validator.isEmail(email)) {
+			console.log("the email is in invalid");
+			setError("the email is in invalid");
+		}
+		if (!validator.isEmpty(password) || password.includes(" ")) {
+			console.log("password cannot contain white space please create new one");
+			setError("password cannot contain white space please create new one");
+		}
+		if (password.length < 8) {
+			setError("password cannot be less than 8 letters");
+		}
+		if (!validator.isEmpty(birthDate)) {
+			setError("select your birth date");
+		}
+		if (!validator.equals(password, reapeatPassword)) {
+			console.log("password and repeat password are not matching");
+			setError("password and repeat password are not matching");
+		}
 
-		// navigate back to login page
+		try {
+			await axios.post("/users/register", {
+				username,
+				password,
+				confirmPassword: reapeatPassword,
+				email,
+				birthDate,
+				gender,
+			});
+		} catch (err) {
+			setError(err.data.message);
+		}
 		navigate("/");
 	};
 	return (
@@ -54,6 +93,7 @@ function RegisterForm() {
 					<TextField
 						label="Repeat password"
 						variant="outlined"
+						type="password"
 						color="primary"
 						className="my-2 auth_input"
 						value={reapeatPassword}
@@ -92,7 +132,7 @@ function RegisterForm() {
 							onChange={(e) => setGender(e.target.value)}
 						>
 							<FormControlLabel
-								value="male"
+								value="MALE"
 								color="primary"
 								control={<Radio />}
 								label="Male"
@@ -103,7 +143,7 @@ function RegisterForm() {
 								}}
 							/>
 							<FormControlLabel
-								value="female"
+								value="FEMALE"
 								color="primary"
 								control={<Radio />}
 								label="Female"
@@ -114,7 +154,7 @@ function RegisterForm() {
 								}}
 							/>
 							<FormControlLabel
-								value="other"
+								value="OTHER"
 								color="primary"
 								control={<Radio />}
 								label="other"
