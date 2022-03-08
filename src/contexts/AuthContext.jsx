@@ -10,7 +10,9 @@ function AuthContextProvider({ children }) {
 		if (getToken()) {
 			axios
 				.get("/users/me")
-				.then((res) => setUser(res.data.user))
+				.then((res) => {
+					setUser(res.data.user);
+				})
 				.catch((err) => console.log(err));
 		}
 	}, []);

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import { Button, ThemeProvider } from "@mui/material";
 import theme from "../../services/mui_style";
 
@@ -5,6 +7,8 @@ export default function UserProfileHeader({
 	setShowModalCreateTeam,
 	showModalCreateTeam,
 }) {
+	const { user } = useContext(AuthContext);
+
 	return (
 		<ThemeProvider theme={theme}>
 			<div className="user_profile_header d-flex align-items-center position-relative">
@@ -23,9 +27,9 @@ export default function UserProfileHeader({
 					{/* user profile title */}
 					<div className="profile_title_container ms-4">
 						<h2 className="ms-3">
-							<strong>Oakleyster</strong>
+							<strong>{user.username}</strong>
 						</h2>
-						<h3 className="ms-3">Member since: 20 September 2022</h3>
+						<h3 className="ms-3">Member since:</h3>
 					</div>
 				</div>
 				<div className="position-absolute end-0 bottom-0 me-5 mb-3">

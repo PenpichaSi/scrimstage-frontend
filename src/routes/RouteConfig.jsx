@@ -11,10 +11,11 @@ import UserProfile from "../pages/UserProfile";
 import LookingForPlayer from "../pages/LookingForPlayer";
 import LookingForScrim from "../pages/LookingForScrim";
 import LookingForTeam from "../pages/LookingForTeam";
-import { AuthContext } from "../contexts/AuthContext";
+import PlayStageAccountSetting from "../components/Settings/PlayStageAccountSetting";
+import GameAccountSetting from "../components/Settings/GameAccountSetting";
 
 function RouteConfig() {
-	const { user } = useContext(AuthContext);
+	const [user, setUser] = useState("asdf");
 
 	const navigate = useNavigate();
 	return (
@@ -22,7 +23,11 @@ function RouteConfig() {
 			{user ? (
 				<Route path="/" element={<MainLayout />}>
 					<Route path="" element={<HomePage />} />
-					<Route path="settings" element={<Settings />} />
+					<Route path="settings/" element={<Settings />}>
+						<Route path="" element={<PlayStageAccountSetting />} />
+						<Route path="game-account" element={<GameAccountSetting />} />
+						<Route path="*" element={<Navigate to="/" />} />
+					</Route>
 					<Route path="team-profile" element={<TeamProfile />} />
 					<Route path="user" element={<UserProfile />} />
 					<Route path="looking-for-player" element={<LookingForPlayer />} />
