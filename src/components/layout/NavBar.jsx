@@ -62,7 +62,7 @@ function NavBar() {
 						className="font-secondary mx-3"
 						onClick={() => navigate("/user")}
 					>
-						{user.username}
+						{user?.username}
 					</b>
 					<div className="vl"></div>
 					<button
