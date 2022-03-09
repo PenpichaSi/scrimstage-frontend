@@ -21,27 +21,27 @@ function RouteConfig() {
 	const navigate = useNavigate();
 	return (
 		<Routes>
-			{user ? (
-				<Route path="/" element={<MainLayout />}>
-					<Route path="" element={<HomePage />} />
-					<Route path="settings/" element={<Settings />}>
-						<Route path="" element={<PlayStageAccountSetting />} />
-						<Route path="game-account" element={<GameAccountSetting />} />
-						<Route path="*" element={<Navigate to="/" />} />
-					</Route>
-					<Route path="team-profile" element={<TeamProfile />} />
-					<Route path="user" element={<UserProfile />} />
-					<Route path="looking-for-player" element={<LookingForPlayer />} />
-					<Route path="looking-for-scrim" element={<LookingForScrim />} />
-					<Route path="looking-for-team" element={<LookingForTeam />} />
+			{/* {user ? ( */}
+			<Route path="/" element={<MainLayout />}>
+				<Route path="" element={<HomePage />} />
+				<Route path="settings/" element={<Settings />}>
+					<Route path="" element={<PlayStageAccountSetting />} />
+					<Route path="game-account" element={<GameAccountSetting />} />
 					<Route path="*" element={<Navigate to="/" />} />
 				</Route>
-			) : (
+				<Route path="team-profile" element={<TeamProfile />} />
+				<Route path="user" element={<UserProfile />} />
+				<Route path="looking-for-player" element={<LookingForPlayer />} />
+				<Route path="looking-for-scrim" element={<LookingForScrim />} />
+				<Route path="looking-for-team" element={<LookingForTeam />} />
+				<Route path="*" element={<Navigate to="/" />} />
+			</Route>
+			{/* ) : (
 				<Route element={<PublicLayout />}>
 					<Route path="/" element={<LoginForm />} />
 					<Route path="/register" element={<RegisterForm />} />
 				</Route>
-			)}
+			)} */}
 		</Routes>
 	);
 }
